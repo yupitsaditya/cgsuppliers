@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+
+}
+.navtopcontainer
+{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+header
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cgsupplierslogo{
+    margin-right: auto;
+}
