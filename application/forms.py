@@ -41,6 +41,11 @@ choices = {
 
 }
 
+class contactUsQueryForm(FlaskForm):
+    email               =   StringField("Email",validators=[DataRequired(),Email()])
+    name                =   StringField("Name",validators=[DataRequired()])
+    queryDescription    =   StringField("QueryDescription",validators=[DataRequired()])
+    submit              =   SubmitField("Submit",validators=[DataRequired()])
 
 class AddPropertyForm(FlaskForm):
     # dt = DateField('DatePicker', format='%Y-%m-%d')

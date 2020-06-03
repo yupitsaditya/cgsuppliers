@@ -3,6 +3,11 @@ from application import db
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 
 
+class contactUsQuery(db.Document):
+    email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
+    name                =   db.StringField(max_length=50,validators=[DataRequired()])
+    queryDescription    =   db.StringField(max_length=50,validators=[DataRequired()])
+
 class Property(db.Document):
     email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
     mapsLocation        =   db.StringField(validators=[DataRequired()])

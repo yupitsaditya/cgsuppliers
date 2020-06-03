@@ -1,8 +1,7 @@
 from application import app, db
 from flask import render_template, redirect, flash, url_for
-from application.models import Property, covidResources, covidLogin,HotelProperty
-from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm
-
+from application.models import Property, covidResources, covidLogin,HotelProperty,contactUsQuery
+from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm,contactUsQueryForm
 
 @app.route("/")
 def index():
@@ -14,11 +13,31 @@ def index():
 def productPage(productType='award'):
     return render_template("product.html",productType=productType)
 
+# @app.route("/addCovidLogin",methods=['GET','POST'])
+# def addCovidLogin():
+#     form= CovidLoginForm()
+#     if form.validate_on_submit():
+#         email               =   form.email.data
+#         name                =   form.name.data
+#         age                 =   form.age.data
+#         locationZipCode     =   form.locationZipCode.data
+#         idNumber            =   form.idNumber.data
+#         covidLogin(email=email,name=name,age=age,locationZipCode=locationZipCode, idNumber=idNumber).save()
+#         flash("You have been successfully added to the database. We will find you help.")
+#         return redirect(url_for("index"))
+#     return render_template("addCovidLogin.html", form=form, addCovidLogin=True)
 
-
-@app.route("/contactus")
+@app.route("/contactus",methods=['GET','POST'])
 def contactus():
-    return render_template("contactus.html" )
+    form=contactUsQueryForm()
+    if form.validate_on_submit():
+        email               =   form.email.data
+        name                =   form.name.data
+        queryDescription    =   form.queryDescription.data
+        contactUsQuery(email=email,name=name,queryDescription=queryDescription).save()
+        flash("Thank you for your query. We will get back to you soon.",'success')
+        return redirect(url_for("index"))
+    return render_template("contactus.html",contactus=True,form=form)
 # # @app.route("/index")
 # @app.route("/sublease")
 # def index():
