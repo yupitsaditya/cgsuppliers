@@ -7,5 +7,5 @@ class Config(object):
 
     MONGODB_SETTINGS ={
         'db':'cgsuppliers',
-        'host':"mongodb+srv://admin:admin@cluster0-b8t27.mongodb.net/test?retryWrites=true&w=majority"
+        'host':"mongodb+srv://XXXXX:XXXX@cluster0-b8t27.mongodb.net/test?retryWrites=true&w=majority"
         }
