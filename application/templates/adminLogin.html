@@ -3,7 +3,7 @@
 {% block content %}
 <h1 style="font-size: 48px; padding: 20px;text-align: center;">Please Fill out this form</h1>
 <div class="property-form" style="text-align: center;">
-    <form name="contactUs" action="" style="padding: 0% 20% 0 20%;" method="post" novalidate>
+    <form name="adminLogin" action="" style="padding: 0% 20% 0 20%;" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             <b> {{ form.email.label}}</b>
@@ -14,20 +14,12 @@
             {{ form.email(class_="form-control")}}
         </p>
         <p>
-            <b> {{ form.name.label}}</b>
-            {% for error in form.name.errors %}
+            <b> {{ form.password.label}}</b>
+            {% for error in form.password.errors %}
             <br>
             <span class="error-message">{{ error }}</span>
             {% endfor %}
-            {{ form.name(class_="form-control") }}
-        </p>
-        <p>
-            <b> {{ form.queryDescription.label}}</b>
-            {% for error in form.queryDescription.errors %}
-            <br>
-            <span class="error-message">{{ error }}</span>
-            {% endfor %}
-            {{ form.queryDescription(class_="form-control")}}
+            {{ form.password(class_="form-control") }}
         </p>
         
         
@@ -37,8 +29,5 @@
 
     </form>
 
-    <h4>Address : C-26/1, Kabir Kirti Mandir, Kabir Road, Varanasi 221001 U.P.</h4>
-    <h4>Phone : 987456321</h4>
-    <h4>Email : cgsuppliers@gmail.com</h4>
-    
+
 {% endblock %}

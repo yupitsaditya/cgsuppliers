@@ -2,6 +2,9 @@ import flask
 from application import db
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 
+class adminLogin(db.Document):
+    email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
+    password            =   db.StringField(max_length=50,validators=[DataRequired()])
 
 class contactUsQuery(db.Document):
     email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])

@@ -1,7 +1,7 @@
 from application import app, db
 from flask import render_template, redirect, flash, url_for
-from application.models import Property, covidResources, covidLogin,HotelProperty,contactUsQuery
-from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm,contactUsQueryForm
+from application.models import Property, covidResources, covidLogin,HotelProperty,contactUsQuery,adminLogin
+from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm,contactUsQueryForm,adminLoginForm
 
 @app.route("/")
 def index():
@@ -12,20 +12,6 @@ def index():
 @app.route("/product/<productType>")
 def productPage(productType='award'):
     return render_template("product.html",productType=productType)
-
-# @app.route("/addCovidLogin",methods=['GET','POST'])
-# def addCovidLogin():
-#     form= CovidLoginForm()
-#     if form.validate_on_submit():
-#         email               =   form.email.data
-#         name                =   form.name.data
-#         age                 =   form.age.data
-#         locationZipCode     =   form.locationZipCode.data
-#         idNumber            =   form.idNumber.data
-#         covidLogin(email=email,name=name,age=age,locationZipCode=locationZipCode, idNumber=idNumber).save()
-#         flash("You have been successfully added to the database. We will find you help.")
-#         return redirect(url_for("index"))
-#     return render_template("addCovidLogin.html", form=form, addCovidLogin=True)
 
 @app.route("/contactus",methods=['GET','POST'])
 def contactus():
@@ -38,6 +24,27 @@ def contactus():
         flash("Thank you for your query. We will get back to you soon.",'success')
         return redirect(url_for("index"))
     return render_template("contactus.html",contactus=True,form=form)
+
+@app.route("/adminLogin",methods=['GET','POST'])
+def adminLoginView():
+    form=adminLoginForm()
+    if form.validate_on_submit():
+        email               =   form.email.data
+        password            =   form.password.data
+        # adminLogin(email=email,password=password).save()
+        adminFromDB  =   adminLogin.objects(email=email).first()
+        if adminFromDB and password == adminFromDB.password:
+            flash("Thank you for your query. We will get back to you soon.",'success')
+        return redirect(url_for("admin"))
+    # return render_template("contactus.html",contactus=True,form=form)
+    return render_template("adminLogin.html",form=form)
+
+
+@app.route("/admin")
+def admin():
+    
+    return render_template("admin.html")
+
 # # @app.route("/index")
 # @app.route("/sublease")
 # def index():

@@ -40,11 +40,15 @@ choices = {
     ]
 
 }
+class adminLoginForm(FlaskForm):
+    email               =   StringField("Email",validators=[DataRequired(),Email()])
+    password            =   PasswordField("Password",validators=[DataRequired()])
+    submit              =   SubmitField("Login",validators=[DataRequired()])
 
 class contactUsQueryForm(FlaskForm):
     email               =   StringField("Email",validators=[DataRequired(),Email()])
     name                =   StringField("Name",validators=[DataRequired()])
-    queryDescription    =   StringField("QueryDescription",validators=[DataRequired()])
+    queryDescription    =   StringField("Query Description",validators=[DataRequired()])
     submit              =   SubmitField("Submit",validators=[DataRequired()])
 
 class AddPropertyForm(FlaskForm):
