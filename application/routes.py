@@ -6,9 +6,19 @@ from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginFor
 
 @app.route("/")
 def index():
-    return render_template("home.html", covidHelp=True )
+    return render_template("home.html" )
 
 
+@app.route("/product/")
+@app.route("/product/<productType>")
+def productPage(productType='award'):
+    return render_template("product.html",productType=productType)
+
+
+
+@app.route("/contactus")
+def contactus():
+    return render_template("contactus.html" )
 # # @app.route("/index")
 # @app.route("/sublease")
 # def index():

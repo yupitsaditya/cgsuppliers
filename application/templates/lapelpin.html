@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<section class="products">
+
+    <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
+        {% for i in range(0,7)%}
+    <div class="product-card">
+      <div class="product-image">
+        <img src="../static/images/lapelpin.png">
+      </div>
+      <div class="product-info">
+        <h5>America Flag Pin</h5>
+        <h6>$9.99</h6>
+      </div>
+    </div>
+    {% endfor %} 
+      
+    <!-- more products -->
+  
+  </section>
+
+{% endblock %}
