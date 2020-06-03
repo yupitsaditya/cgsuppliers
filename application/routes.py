@@ -55,7 +55,7 @@ def adminLoginView():
         # adminLogin(email=email,password=password).save()
         adminFromDB  =   adminLogin.objects(email=email).first()
         if adminFromDB and password == adminFromDB.password:
-            flash("Thank you for your query. We will get back to you soon.",'success')
+            flash("Hello Admin",'success')
         return redirect(url_for("admin"))
     # return render_template("contactus.html",contactus=True,form=form)
     return render_template("adminLogin.html",form=form)
