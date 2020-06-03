@@ -6,7 +6,7 @@
 <section class="products">
     
     <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
-        {% for i in range(0,7)%}
+        <!-- {% for i in range(0,7)%}
     <div class="product-card">
       <div class="product-image">
         {% if productType=='award' %}
@@ -25,6 +25,20 @@
       <div class="product-info">
         <h5>Text Here</h5>
         <h6>$9.99</h6>
+      </div>
+    </div>
+    {% endfor %}  -->
+
+
+    {% for item in items%}
+    <div class="product-card">
+      <div class="product-image">
+        <img src = "data:image/png;base64, {{codecs.encode(item.imageFile.read(), 'base64').decode('utf-8')}}" alt= "myImage"/>
+        <!-- <img src={{ item.imageFile }}> -->
+      </div>
+      <div class="product-info">
+        <h5>{{ item.productName}}</h5>
+        <h6>${{ item.price }}</h6>
       </div>
     </div>
     {% endfor %} 

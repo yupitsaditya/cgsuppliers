@@ -1,5 +1,46 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    
+<h1 style="font-size: 48px; padding: 20px;text-align: center;">Add Product to Database</h1>
+<div class="property-form" style="text-align: center;">
+    <form name="contactUs" action="" style="padding: 0% 20% 0 20%;" method="post" novalidate enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            <b> {{ form.productName.label}}</b>
+            {% for error in form.productName.errors %}
+            <br>
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}
+            {{ form.productName(class_="form-control")}}
+        </p>
+        <p>
+            <b> {{ form.category.label}}</b>
+            {% for error in form.category.errors %}
+            <br>
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}
+            {{ form.category(class_="form-control") }}
+        </p>
+        <p>
+            <b> {{ form.price.label}}</b>
+            {% for error in form.price.errors %}
+            <br>
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}
+            {{ form.price(class_="form-control")}}
+        </p>
+        <p>
+            <b> {{ form.imageFile.label}}</b>
+            {% for error in form.imageFile.errors %}
+            <br>
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}
+            {{ form.imageFile(class_="form-control")}}
+        </p>
+        
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
 {% endblock %}
